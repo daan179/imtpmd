@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/ecicon" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="20dp"
+        android:text="Applicatie"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/info_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version:\t1.0\nBuild:\t1.0\n"
+        android:textSize="16dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/Creators"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/info_textView"
+        android:layout_alignStart="@+id/info_textView"
+        android:layout_below="@+id/info_textView"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Creators"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="351dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="De EC app is gebouwd door:\n\nDaniël van Leeuwen\nDipak Changur\n\nVoor meer informatie neem contact op via:\n\n
+S1078911@student.hsleiden.nl \t D v Leeuwen\n
+S1080098@student.hsleiden.nl \t D Cahngur"
+        android:layout_alignTop="@+id/Creators"
+        android:layout_alignLeft="@+id/Creators"
+        android:layout_alignStart="@+id/Creators"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</LinearLayout>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ECApp</string>
+    <string name="title_activity_propedeuse_">Propedeuse</string>
+    <string name="title_activity_hoofd_fase_">HoofdFase</string>
+    <string name="title_activity_richting_">Studie richting</string>
+    <string name="title_activity_about_">About</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="one_string">About</string>
+    <string name="two_string">Two</string>
+    <string name="three_string">Three</string>
+    <string name="four_string">Four</string>
+    <string name="build">
+
+        Version:  1.0\n
+        Build:    1.0\n
+
+                        </string>
+    <string name="creators">
+        De EC app is gebouwd door:
+        \n\n
+        Daniël van Leeuwen\n
+        Dipak Changur\n
+        \n
+        Voor meer informatie neem contact op via: \n\n
+        S1078911@student.hsleiden.nl \t D v Leeuwen
+        S1080098@student.hsleiden.nl \t D Cahngur
+        </string>
+</resources>

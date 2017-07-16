@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.solutions.guidedrecovery.ecapp.Activities.MainActivity">
+
+
+    <Button
+        android:id="@+id/propedeuse"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Propedeuse"
+        android:theme="@style/AppTheme.Button_light"
+        android:textColorHint="@color/cardview_light_background"
+        android:textColorHighlight="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178"
+        tools:text="Propedeuse" />
+
+    <Button
+        android:id="@+id/hoofdFase"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:theme="@style/AppTheme.Button_dark"
+        android:text="Hoofdfase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/propedeuse"
+        app:layout_constraintVertical_bias="0.09"
+        tools:text="Hoofdfase" />
+</android.support.constraint.ConstraintLayout>
