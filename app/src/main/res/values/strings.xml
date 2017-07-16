@@ -4,7 +4,10 @@
     <string name="title_activity_hoofd_fase_">HoofdFase</string>
     <string name="title_activity_richting_">Studie richting</string>
     <string name="title_activity_about_">About</string>
-
+    <string name="MT">Mediatechnologie </string>
+    <string name="SE">Software Engineering </string>
+    <string name="BIT">Business IT </string>
+    <string name="FICT">Forensisch ICT </string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="one_string">About</string>

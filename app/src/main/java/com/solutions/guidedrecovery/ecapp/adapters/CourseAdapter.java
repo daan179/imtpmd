@@ -45,7 +45,7 @@ public class CourseAdapter extends BaseAdapter {
     int TotalEcRequired;
     Context context;
     ViewHolder holder;
-
+    SharedPreferences.Editor editor;
     public CourseAdapter(){
 
     }
@@ -108,7 +108,7 @@ public class CourseAdapter extends BaseAdapter {
 
 
         final SharedPreferences sp = context.getSharedPreferences("key", 0);
-        final SharedPreferences.Editor sedt = sp.edit();
+
 
         String ecNodig = sp.getString("ecNogNodig","");
         String nogTeDoen = sp.getString("nogTeBehalen","");
@@ -162,15 +162,15 @@ public class CourseAdapter extends BaseAdapter {
                         int  aantalEcs = Integer.parseInt(info.get("credits"));
                         HaveNrEc += aantalEcs;
                         TotalEcRequired -= aantalEcs;
-                        Log.d("EC + = ",String.valueOf(aantalEcs));
+
                         EcTotal.setText(  String.valueOf(HaveNrEc));
                         EcNogNietGehaald.setText(  String.valueOf(TotalEcRequired));
                         nogTebehalen.setText("Nog te behalen Ec's: ");
-
-                        if(HaveNrEc == 60)
+                        Log.d("123",""+HaveNrEc+TotalEcRequired);
+                        if(  TotalEcRequired== 0)
                         {
-
-                            CharSequence text = "Gefeliciteerd, je hebt je propedeuse behaald!";
+                            Log.d("123","gehaald");
+                            CharSequence text = "Gefeliciteerd, je hebt al je EC's binnen!";
                             int duration = Toast.LENGTH_LONG;
 
                             Toast toast = Toast.makeText(context, text, duration);
@@ -202,6 +202,10 @@ public class CourseAdapter extends BaseAdapter {
 
                 SharedPreferences sp = context.getSharedPreferences("key", 0);
                 SharedPreferences.Editor sedt = sp.edit();
+
+
+
+
 
                 sedt.putString("ecNogNodig", EcNogNietGehaald.getText().toString());
                 sedt.putString("nogTeBehalen", nogTebehalen.getText().toString());

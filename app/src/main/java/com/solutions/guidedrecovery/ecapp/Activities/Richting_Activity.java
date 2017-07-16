@@ -15,7 +15,7 @@ public class Richting_Activity extends AppCompatActivity {
 
     private static Button MT,BIT,FICT,SE;
     // geeft righting mee
-    int sessionId;
+    String sessionId;
 
 
     @Override
@@ -33,7 +33,7 @@ public class Richting_Activity extends AppCompatActivity {
                 new View.OnClickListener(){
                     @Override
                     public void  onClick(View v){
-                        sessionId = 1;
+                        sessionId = "MT";
                         Intent i = new Intent(v.getContext(),HoofdFase_Activity.class);
                         i.putExtra("EXTRA_SESSION_ID", sessionId);
 
@@ -47,7 +47,7 @@ public class Richting_Activity extends AppCompatActivity {
                 new View.OnClickListener(){
                     @Override
                     public void  onClick(View v){
-                        sessionId = 2;
+                        sessionId = "SE";
                         Intent i = new Intent(v.getContext(),HoofdFase_Activity.class);
                         i.putExtra("EXTRA_SESSION_ID", sessionId);
 
@@ -62,7 +62,7 @@ public class Richting_Activity extends AppCompatActivity {
                     @Override
 
                     public void  onClick(View v){
-                        sessionId = 3;
+                        sessionId = "BIT";
                         Intent i = new Intent(v.getContext(),HoofdFase_Activity.class);
                         i.putExtra("EXTRA_SESSION_ID", sessionId);
 
@@ -76,7 +76,7 @@ public class Richting_Activity extends AppCompatActivity {
                 new View.OnClickListener(){
                     @Override
                     public void  onClick(View v){
-                        sessionId = 4;
+                        sessionId = "FICT";
                         Intent i = new Intent(v.getContext(),HoofdFase_Activity.class);
                         i.putExtra("EXTRA_SESSION_ID", sessionId);
 
