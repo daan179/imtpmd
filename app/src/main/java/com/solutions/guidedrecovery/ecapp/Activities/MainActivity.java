@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, About_Activity.class);
                 startActivity(intent);
                 return true;
+            case R.id.Home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

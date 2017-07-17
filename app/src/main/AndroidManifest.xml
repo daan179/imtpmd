@@ -33,8 +33,12 @@
         <activity
             android:name=".Activities.Richting_Activity"
             android:label="@string/title_activity_richting_"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".Activities.MTActivity"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.MTActivity" />
+        <activity
+            android:name=".Activities.EC_results"
+            android:label="@string/title_activity_ec_results"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

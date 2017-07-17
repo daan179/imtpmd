@@ -2,6 +2,7 @@ package com.solutions.guidedrecovery.ecapp.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +10,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,59 +40,80 @@ public class HoofdFase_Activity extends AppCompatActivity {
     CourseAdapter adapter;
     ArrayList<Vak> arrayOfCourses;
     ListView listView;
-
+    Button result_knop;
     int sum = 0;
     int TotalFaseEc;
     private static String url;
     Intent i;
     String s;
     ArrayList<HashMap<String, String>> contactList;
+    TextView EcTotal;
+    TextView nogTebehalen;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu_app, menu);
+        return true;
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()) {
+            case R.id.menu_one:
+                Intent intent = new Intent(this, About_Activity.class);
+                startActivity(intent);
+                return true;
+            case R.id.Home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoofd_fase_);
 
-        Intent intent=this.getIntent();
-        if(intent !=null)
+
+
+//        Log.d("test", "" + nogTeDoen);
+        OnClickButtonListener();
+
+        Intent intent = this.getIntent();
+        if (intent != null)
             s = intent.getStringExtra("EXTRA_SESSION_ID");
 
 //        String s = i.getStringExtra("EXTRA_SESSION_ID");
-        Log.d("123",s);
+        Log.d("123", s);
 
-        if (s.equals("MT"))
-        {
+
+//        OnClickButtonListener();
+
+        if (s.equals("MT")) {
             url = "http://185.183.182.128/api/mtcourses";
             setTitle(R.string.MT);
             TotalFaseEc = 167;
         }
-        if (s.equals("SE"))
-        {
+        if (s.equals("SE")) {
             url = "http://185.183.182.128/api/secourses";
             setTitle(R.string.SE);
             TotalFaseEc = 164;
         }
-        if (s.equals("BIT"))
-        {
+        if (s.equals("BIT")) {
             url = "http://185.183.182.128/api/bitcourses";
             setTitle(R.string.BIT);
             TotalFaseEc = 170;
         }
-        if (s.equals("FICT"))
-        {
+        if (s.equals("FICT")) {
             url = "http://185.183.182.128/api/fitcourses";
             setTitle(R.string.FICT);
             TotalFaseEc = 167;
         }
-        final TextView EcTotal = (TextView) findViewById(R.id.textView5);
-        final TextView EcNogNietGehaald = (TextView) findViewById(R.id.textView7);
-        final TextView nogTebehalen = (TextView) findViewById(R.id.textView6);
-        CheckBox cb = (CheckBox)findViewById(R.id.checkBox);
-
-
-
 
 
         // Construct the data source
@@ -99,26 +124,18 @@ public class HoofdFase_Activity extends AppCompatActivity {
                 HoofdFase_Activity.this, contactList,
                 R.layout.list_item, new String[]{"code", "title",
                 "credits"}, new int[]{R.id.moduleCode,
-                R.id.module, R.id.ec},TotalFaseEc);
-
+                R.id.module, R.id.ec}, TotalFaseEc, s);
 
 
         contactList = new ArrayList<>();
         // Attach the adapter to a ListView
         listView = (ListView) findViewById(R.id.listView);
-//        listView.setAdapter(adapter);
-
-        // Get all the info
-//        showInfo();
 
 
         new HoofdFase_Activity.GetContacts().execute();
 
 
     }
-
-
-
 
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {
@@ -148,7 +165,7 @@ public class HoofdFase_Activity extends AppCompatActivity {
 
 
                     // Getting JSON Array node
-                    JSONArray contacts =  new JSONArray(jsonStr);
+                    JSONArray contacts = new JSONArray(jsonStr);
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
@@ -216,14 +233,44 @@ public class HoofdFase_Activity extends AppCompatActivity {
                     HoofdFase_Activity.this, contactList,
                     R.layout.list_item, new String[]{"code", "title",
                     "credits"}, new int[]{R.id.moduleCode,
-                    R.id.module, R.id.ec},TotalFaseEc);
-            Log.d("123","check onPostExecute");
+                    R.id.module, R.id.ec}, TotalFaseEc, s);
+            Log.d("123", "check onPostExecute");
             listView.setAdapter(adapter);
-
 
 
         }
 
     }
 
+    public void OnClickButtonListener() {
+
+
+
+
+//        Log.d("testButton", EcTotal);
+        result_knop = (Button)findViewById(R.id.result);
+        result_knop.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        final SharedPreferences sp = getSharedPreferences("key", 0);
+                        String ecNodig = sp.getString("ecNogNodig", "");
+                        String valueTotal = sp.getString("ecTotal", "");
+
+                        Log.d("testButton", valueTotal+ ecNodig);
+                        Intent i = new Intent(v.getContext(), EC_results.class);
+
+
+                        i.putExtra("ecTotal", valueTotal);
+                        i.putExtra("ecNogNodig", ecNodig);
+                        startActivity(i);
+                    }
+                }
+        );
+
+
+    }
 }
+
+

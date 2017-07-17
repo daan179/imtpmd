@@ -11,6 +11,29 @@
 
         <include layout="@layout/content_propedeuse_"/>
 
+        <Button
+            android:id="@+id/result_prop"
+            android:layout_width="59dp"
+            android:layout_height="69dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/nextbutton"
+            android:textColor="@color/white"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
 
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/cardview_light_background"
+            android:theme="@style/AppTheme.Button_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+
+            />
 
 </android.support.constraint.ConstraintLayout>

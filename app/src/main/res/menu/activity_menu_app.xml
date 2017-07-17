@@ -9,8 +9,11 @@
 
             android:title="@string/one_string"
             app:showAsAction="never" />
-
+        <item
+            android:id="@+id/Home"
+            android:title="Home" />
 
     </group>
+
 
 </menu>

@@ -1,8 +1,11 @@
 package com.solutions.guidedrecovery.ecapp.Activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.solutions.guidedrecovery.ecapp.R;
@@ -13,21 +16,33 @@ import com.solutions.guidedrecovery.ecapp.R;
 
 public class About_Activity extends AppCompatActivity {
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu_app, menu);
+        return true;
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_one:
+                Intent intent = new Intent(this, About_Activity.class);
+                startActivity(intent);
+                return true;
+            case R.id.Home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-//        TextView build = (TextView) findViewById(R.id.info_textView);
-//        TextView info = (TextView) findViewById(R.id.textView9);
-//
-//        build.setText( getResources().getString(R.string.build));
-//        info.setText( getResources().getString(R.string.creators));
-//
-//
-//
-//        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/arial.ttf");
-//        info.setTypeface(custom_font);
-//        build.setTypeface(custom_font);
 
 
 

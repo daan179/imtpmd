@@ -2,6 +2,7 @@ package com.solutions.guidedrecovery.ecapp.Activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,7 +11,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListAdapter;
@@ -44,20 +48,44 @@ public class Propedeuse_Activity extends AppCompatActivity {
     int sum = 0;
     int HaveNrEc = 0;
     int TotalPropEc = 60;
+    Button result_knop;
 
     // URL to get contacts JSON
     private static String url = "http://185.183.182.128/api/PropedeuseCourses";
 
     ArrayList<HashMap<String, String>> contactList;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu_app, menu);
+        return true;
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_one:
+                Intent intent = new Intent(this, About_Activity.class);
+                startActivity(intent);
+                return true;
+            case R.id.Home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.content_propedeuse_);
-
+        setContentView(R.layout.activity_propedeuse_);
+        OnClickButtonListener();
         final TextView EcTotal = (TextView) findViewById(R.id.textView5);
         final TextView EcNogNietGehaald = (TextView) findViewById(R.id.textView7);
         final TextView nogTebehalen = (TextView) findViewById(R.id.textView6);
@@ -75,7 +103,7 @@ public class Propedeuse_Activity extends AppCompatActivity {
                 Propedeuse_Activity.this, contactList,
                 R.layout.list_item, new String[]{"code", "title",
                 "credits"}, new int[]{R.id.moduleCode,
-                R.id.module, R.id.ec},TotalPropEc);
+                R.id.module, R.id.ec},TotalPropEc,"prop");
 
 
 
@@ -192,7 +220,7 @@ public class Propedeuse_Activity extends AppCompatActivity {
                     Propedeuse_Activity.this, contactList,
                     R.layout.list_item, new String[]{"code", "title",
                     "credits"}, new int[]{R.id.moduleCode,
-                    R.id.module, R.id.ec},TotalPropEc);
+                    R.id.module, R.id.ec},TotalPropEc,"prop");
             Log.d("123","check onPostExecute");
             listView.setAdapter(adapter);
 
@@ -211,6 +239,36 @@ public class Propedeuse_Activity extends AppCompatActivity {
 //            });
 
         }
+
+    }
+
+    public void OnClickButtonListener() {
+
+
+
+
+//        Log.d("testButton", EcTotal);
+        result_knop = (Button)findViewById(R.id.result_prop);
+        result_knop.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        final SharedPreferences sp = getSharedPreferences("key", 0);
+                        String ecNodig = sp.getString("ecNogNodig", "");
+                        String valueTotal = sp.getString("ecTotal", "");
+
+                        Log.d("testButton", valueTotal+ ecNodig);
+                        Intent i = new Intent(v.getContext(), EC_results.class);
+
+
+                        i.putExtra("ecTotal", valueTotal);
+                        i.putExtra("ecNogNodig", ecNodig);
+                        startActivity(i);
+                    }
+                }
+        );
+
 
     }
 
